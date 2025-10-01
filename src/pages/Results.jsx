@@ -196,6 +196,7 @@ function Results() {
                     size="lg"
                     showValueLabel={true}
                     className="mb-2"
+                    aria-label={`${getDimensionName(dimension)} confidence level`}
                   />
                   
                   <div className="flex justify-between text-sm">
