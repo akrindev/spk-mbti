@@ -1,7 +1,7 @@
 .results-container {
   min-height: 100vh;
   padding: 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
 }
 
 .results-content {
@@ -13,19 +13,155 @@
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
+.forward-chaining-animation {
+  background: #f0f9ff;
+  border: 2px solid #1e3a8a;
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.forward-chaining-animation h2 {
+  color: #1e3a8a;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.animation-description {
+  text-align: center;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.processing-steps {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+.processing-step {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  animation: slideIn 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.step-number {
+  background: #1e3a8a;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.step-dimension {
+  color: #666;
+  font-size: 0.85rem;
+  flex: 1;
+}
+
+.step-arrow {
+  color: #3b82f6;
+  font-weight: bold;
+}
+
+.step-trait {
+  background: #3b82f6;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.step-weight {
+  background: #28a745;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.conclusion-step {
+  background: #d4edda;
+  border: 2px solid #28a745;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  margin-top: 1rem;
+  animation: fadeIn 0.5s ease;
+}
+
+.conclusion-step p {
+  margin: 0;
+  color: #155724;
+  font-size: 1.1rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.personality-details {
+  margin: 2rem 0;
+}
+
+.detail-section {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #1e3a8a;
+}
+
+.detail-section h3 {
+  color: #1e3a8a;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.detail-section p {
+  color: #555;
+  line-height: 1.8;
+  margin: 0;
+}
+
 .results-header {
   text-align: center;
   margin-bottom: 3rem;
 }
 
 .results-header h1 {
-  color: #667eea;
+  color: #1e3a8a;
   font-size: 2.5rem;
   margin-bottom: 2rem;
 }
 
 .mbti-type-display {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
   padding: 2rem;
   border-radius: 20px;
   margin: 2rem 0;
@@ -45,7 +181,7 @@
   width: 70px;
   height: 70px;
   background: white;
-  color: #667eea;
+  color: #1e3a8a;
   font-size: 2.5rem;
   font-weight: bold;
   border-radius: 15px;
@@ -66,7 +202,7 @@
 }
 
 .personality-description h3 {
-  color: #667eea;
+  color: #1e3a8a;
   margin-bottom: 1rem;
 }
 
@@ -100,7 +236,7 @@
 }
 
 .dimensions-analysis h3 {
-  color: #667eea;
+  color: #1e3a8a;
   margin-bottom: 2rem;
   text-align: center;
 }
@@ -125,7 +261,7 @@
 }
 
 .trait-badge {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 20px;
@@ -142,7 +278,7 @@
 }
 
 .confidence-bar {
-  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%);
   height: 100%;
   display: flex;
   align-items: center;
@@ -166,7 +302,7 @@
 }
 
 .traits-comparison span.active {
-  color: #667eea;
+  color: #1e3a8a;
   font-weight: bold;
 }
 
@@ -175,7 +311,7 @@
 }
 
 .personality-traits h3 {
-  color: #667eea;
+  color: #1e3a8a;
   margin-bottom: 1.5rem;
 }
 
@@ -217,14 +353,14 @@
 }
 
 .action-button.primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
   color: white;
-  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 5px 20px rgba(30, 58, 138, 0.4);
 }
 
 .action-button.primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6);
+  box-shadow: 0 10px 30px rgba(30, 58, 138, 0.6);
 }
 
 .action-button.secondary {
@@ -296,10 +432,37 @@
     font-size: 1.8rem;
   }
 
+  .forward-chaining-animation {
+    padding: 1.5rem;
+  }
+
+  .forward-chaining-animation h2 {
+    font-size: 1.3rem;
+  }
+
+  .processing-step {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    padding: 0.5rem;
+  }
+
+  .step-dimension {
+    flex: 100%;
+    order: 1;
+  }
+
   .dimension-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
+  }
+
+  .detail-section {
+    padding: 1rem;
+  }
+
+  .detail-section h3 {
+    font-size: 1rem;
   }
 
   .actions {
@@ -314,4 +477,13 @@
   .traits-list {
     grid-template-columns: 1fr;
   }
+}
+
+/* Animation classes for Hero UI */
+.animate-slideIn {
+  animation: slideIn 0.3s ease;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease;
 }

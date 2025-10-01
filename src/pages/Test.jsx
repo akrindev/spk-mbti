@@ -7,27 +7,28 @@ function Test() {
   const navigate = useNavigate();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState([]);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedRating, setSelectedRating] = useState(null);
 
   const currentQuestion = questions[currentQuestionIndex];
   const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
 
-  const handleOptionSelect = (option) => {
-    setSelectedOption(option);
+  const handleRatingSelect = (rating) => {
+    setSelectedRating(rating);
   };
 
   const handleNext = () => {
-    if (selectedOption === null) {
-      alert('Silakan pilih salah satu jawaban sebelum melanjutkan.');
+    if (selectedRating === null) {
+      alert('Silakan pilih salah satu nilai sebelum melanjutkan.');
       return;
     }
 
     // Save the answer using forward chaining approach
+    // Rating 1-2 = opposite trait, 4-5 = main trait, 3 = neutral
     const newAnswer = {
       questionId: currentQuestion.id,
       dimension: currentQuestion.dimension,
-      value: selectedOption.value,
-      weight: selectedOption.weight
+      trait: currentQuestion.trait,
+      rating: selectedRating
     };
 
     const updatedAnswers = [...answers, newAnswer];
@@ -36,7 +37,7 @@ function Test() {
     // Move to next question or results
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setSelectedOption(null);
+      setSelectedRating(null);
     } else {
       // Forward chaining: All data collected, navigate to results for processing
       navigate('/results', { state: { answers: updatedAnswers } });
@@ -49,9 +50,17 @@ function Test() {
       // Remove the last answer
       const updatedAnswers = answers.slice(0, -1);
       setAnswers(updatedAnswers);
-      setSelectedOption(null);
+      setSelectedRating(null);
     }
   };
+
+  const ratingLabels = [
+    { value: 1, label: "Sangat Tidak Setuju" },
+    { value: 2, label: "Tidak Setuju" },
+    { value: 3, label: "Netral" },
+    { value: 4, label: "Setuju" },
+    { value: 5, label: "Sangat Setuju" }
+  ];
 
   return (
     <div className="test-container">
@@ -69,17 +78,33 @@ function Test() {
         <div className="question-card">
           <h2 className="question-text">{currentQuestion.question}</h2>
           
-          <div className="options-container">
-            {currentQuestion.options.map((option, index) => (
-              <button
-                key={index}
-                className={`option-button ${selectedOption === option ? 'selected' : ''}`}
-                onClick={() => handleOptionSelect(option)}
-              >
-                <span className="option-letter">{String.fromCharCode(65 + index)}</span>
-                <span className="option-text">{option.text}</span>
-              </button>
-            ))}
+          <div className="likert-scale">
+            <div className="scale-labels">
+              <span className="scale-label-left">Sangat Tidak Setuju</span>
+              <span className="scale-label-right">Sangat Setuju</span>
+            </div>
+            <div className="rating-options">
+              {ratingLabels.map((item) => (
+                <div 
+                  key={item.value} 
+                  className={`rating-option ${selectedRating === item.value ? 'selected' : ''}`}
+                  onClick={() => handleRatingSelect(item.value)}
+                >
+                  <input 
+                    type="radio" 
+                    name="rating" 
+                    value={item.value}
+                    checked={selectedRating === item.value}
+                    onChange={() => handleRatingSelect(item.value)}
+                    id={`rating-${item.value}`}
+                  />
+                  <label htmlFor={`rating-${item.value}`}>
+                    <span className="rating-number">{item.value}</span>
+                    <span className="rating-label">{item.label}</span>
+                  </label>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
