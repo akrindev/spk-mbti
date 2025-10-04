@@ -1,32 +1,25 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin './hero.ts';
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Note: You may need to change the path to fit your project structure */
+@source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+@custom-variant dark (&:is(.dark *));
+
+/* Small custom animations used by components that referenced CSS classes */
+.animate-slideIn {
+	animation: slideIn 0.3s ease;
 }
 
-:root {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@keyframes slideIn {
+	from { opacity: 0; transform: translateX(-20px); }
+	to { opacity: 1; transform: translateX(0); }
 }
 
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
+.animate-fadeIn {
+	animation: fadeIn 0.5s ease;
 }
 
-#root {
-  width: 100%;
-  min-height: 100vh;
+@keyframes fadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
 }
-
