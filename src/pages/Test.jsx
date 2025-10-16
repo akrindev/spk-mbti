@@ -74,11 +74,11 @@ function Test() {
 	}, [currentQuestionIndex, answers]);
 
 	const ratingLabels = [
-		{ value: 1, label: "Sangat Tidak Setuju" },
-		{ value: 2, label: "Tidak Setuju" },
-		{ value: 3, label: "Netral" },
-		{ value: 4, label: "Setuju" },
-		{ value: 5, label: "Sangat Setuju" },
+		{ value: 1, label: "Sangat Tidak Setuju", shortLabel: "1" },
+		{ value: 2, label: "Tidak Setuju", shortLabel: "2" },
+		{ value: 3, label: "Netral", shortLabel: "3" },
+		{ value: 4, label: "Setuju", shortLabel: "4" },
+		{ value: 5, label: "Sangat Setuju", shortLabel: "5" },
 	];
 
 	const getButtonColorClasses = (value, isSelected) => {
@@ -143,12 +143,12 @@ function Test() {
 						</h2>
 
 						<div className="space-y-4">
-							<div className="flex justify-between mb-2 text-gray-600 text-sm">
+							<div className="flex justify-between mb-2 text-gray-600 text-xs sm:text-sm">
 								<span className="italic">Sangat Tidak Setuju</span>
 								<span className="italic">Sangat Setuju</span>
 							</div>
 
-							<div className="flex gap-2 md:gap-3">
+							<div className="gap-1 sm:gap-2 md:gap-3 grid grid-cols-5">
 								{ratingLabels.map((item) => {
 									const isSelected = selectedRating === item.value;
 									const colorClasses = getButtonColorClasses(
@@ -157,20 +157,20 @@ function Test() {
 									);
 
 									return (
-										<Button
+										<button
 											key={item.value}
 											type="button"
 											onClick={() => handleRatingSelect(item.value)}
 											aria-pressed={isSelected}
-											size="lg"
-											className={`flex-1 flex flex-col items-center p-4 rounded-xl min-h-[100px] transition transform border ${isSelected ? "scale-105 shadow-lg" : "hover:-translate-y-1"} ${colorClasses}`}
+											className={`flex flex-col items-center justify-center p-2 sm:p-3 md:p-4 rounded-xl min-h-[70px] sm:min-h-[80px] md:min-h-[100px] transition transform cursor-pointer border ${isSelected ? "scale-105 shadow-lg" : "hover:-translate-y-1 hover:shadow-md"} ${colorClasses}`}
 										>
-											<div
-												className={`mt-2 text-sm text-center ${isSelected ? "font-semibold" : "font-medium"}`}
-											>
+											<div className="font-medium text-xs sm:text-sm text-center">
+												{item.shortLabel}
+											</div>
+											<div className="hidden sm:block mt-1 text-xs sm:text-sm text-center">
 												{item.label}
 											</div>
-										</Button>
+										</button>
 									);
 								})}
 							</div>
