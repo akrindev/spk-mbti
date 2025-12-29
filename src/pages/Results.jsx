@@ -1,12 +1,13 @@
 import { Button, Card, CardBody, CardHeader, Chip } from "@heroui/react";
 import { motion, useAnimation } from "framer-motion";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import TestContext from "../context/TestContext";
 import { personalityTypes } from "../data/mbtiData";
 import {
-  determinePersonalityType,
-  getDimensionName,
-  getTraitName,
+	determinePersonalityType,
+	getDimensionName,
+	getTraitName,
 } from "../utils/forwardChaining";
 
 // styles migrated to Tailwind utilities in JSX; removed Results.css import
@@ -14,6 +15,7 @@ import {
 function Results() {
 	const location = useLocation();
 	const navigate = useNavigate();
+	const ctx = useContext(TestContext);
 	const [result, setResult] = useState(null);
 	const [showAnimation, setShowAnimation] = useState(false);
 	const [currentStep, setCurrentStep] = useState(0);
@@ -22,6 +24,14 @@ function Results() {
 
 	const resultRef = useRef(null);
 	const stepIntervalRef = useRef(null);
+
+	const handleRetakeTest = () => {
+		// Reset test state before navigating
+		if (ctx && ctx.resetTest) {
+			ctx.resetTest();
+		}
+		navigate("/test");
+	};
 
 	// Derived visible steps used by effects and render
 	const visibleSteps = result?.processingSteps
@@ -462,8 +472,7 @@ function Results() {
 					{/* Actions */}
 					<div className="flex md:flex-row flex-col justify-center gap-4 mb-6">
 						<Button
-							as={Link}
-							to="/test"
+							onClick={handleRetakeTest}
 							color="primary"
 							variant="bordered"
 							size="lg"
