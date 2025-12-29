@@ -1,7 +1,7 @@
 import { Button, Card, CardBody, CardHeader, Chip } from "@heroui/react";
 import { motion, useAnimation } from "framer-motion";
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import TestContext from "../context/TestContext";
 import { personalityTypes } from "../data/mbtiData";
 import {
@@ -31,6 +31,14 @@ function Results() {
 			ctx.resetTest();
 		}
 		navigate("/test");
+	};
+
+	const handleBackToHome = () => {
+		// Reset test state before navigating
+		if (ctx && ctx.resetTest) {
+			ctx.resetTest();
+		}
+		navigate("/");
 	};
 
 	// Derived visible steps used by effects and render
@@ -191,7 +199,7 @@ function Results() {
 									<Button
 										size="sm"
 										color="primary"
-										onClick={() => {
+										onPress={() => {
 											// gracefully stop and restart
 											stopAnimation();
 											setShowAnimation(false);
@@ -278,7 +286,7 @@ function Results() {
 							<Button
 								color="primary"
 								size="lg"
-								onClick={() => {
+								onPress={() => {
 								stopAnimation();
 								startAnimation();
 							}}
@@ -472,7 +480,7 @@ function Results() {
 					{/* Actions */}
 					<div className="flex md:flex-row flex-col justify-center gap-4 mb-6">
 						<Button
-							onClick={handleRetakeTest}
+							onPress={handleRetakeTest}
 							color="primary"
 							variant="bordered"
 							size="lg"
@@ -481,8 +489,7 @@ function Results() {
 							Ulangi Tes
 						</Button>
 						<Button
-							as={Link}
-							to="/"
+							onPress={handleBackToHome}
 							color="primary"
 							size="lg"
 							className="w-full md:w-auto"
