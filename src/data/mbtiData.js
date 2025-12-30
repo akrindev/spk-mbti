@@ -1,4 +1,4 @@
-// MBTI Personality Types
+// Tipe Kepribadian MBTI
 export const personalityTypes = {
   ISTJ: {
     name: "ISTJ - The Inspector",
@@ -130,21 +130,21 @@ export const personalityTypes = {
   }
 };
 
-// Questions for Forward Chaining - Each question determines one dimension
-// Questions use a 5-point Likert scale where users rate their agreement
+// Pertanyaan untuk Forward Chaining - Setiap pertanyaan menentukan satu dimensi
+// Pertanyaan menggunakan skala Likert 5-poin di mana pengguna menilai persetujuan mereka
 export const questions = [
-  // E vs I (Extraversion vs Introversion) - 7 questions
+  // E vs I (Ekstravesi vs Introversi) - 7 pertanyaan
   {
     id: 1,
     dimension: "EI",
     question: "Saya merasa berenergi ketika berada di tengah banyak orang",
-    trait: "E" // This question measures Extraversion
+    trait: "E" // Pertanyaan ini mengukur Ekstravesi
   },
   {
     id: 2,
     dimension: "EI",
     question: "Saya lebih suka menghabiskan waktu sendirian atau dengan satu orang terdekat",
-    trait: "I" // This question measures Introversion
+    trait: "I" // Pertanyaan ini mengukur Introversi
   },
   {
     id: 3,
@@ -176,8 +176,8 @@ export const questions = [
     question: "Saya senang menjadi pusat perhatian dalam kelompok",
     trait: "E"
   },
-  
-  // S vs N (Sensing vs Intuition) - 6 questions
+
+  // S vs N (Sensing vs Intuisi) - 6 pertanyaan
   {
     id: 8,
     dimension: "SN",
@@ -214,8 +214,8 @@ export const questions = [
     question: "Saya sering membayangkan cara-cara baru dan inovatif untuk melakukan sesuatu",
     trait: "N"
   },
-  
-  // T vs F (Thinking vs Feeling) - 6 questions
+
+  // T vs F (Pemikiran vs Perasaan) - 6 pertanyaan
   {
     id: 14,
     dimension: "TF",
@@ -252,8 +252,8 @@ export const questions = [
     question: "Saya berusaha menjaga harmoni dan menghindari konflik dalam hubungan",
     trait: "F"
   },
-  
-  // J vs P (Judging vs Perceiving) - 6 questions
+
+  // J vs P (Penilaian vs Persepsi) - 6 pertanyaan
   {
     id: 20,
     dimension: "JP",

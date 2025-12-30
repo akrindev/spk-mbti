@@ -9,7 +9,7 @@ export function TestProvider({ children }) {
   const [answers, setAnswers] = useState([]);
   const [selectedRating, setSelectedRating] = useState(null);
 
-  // Load from localStorage on mount
+  // Muat dari localStorage saat mount
   useEffect(() => {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
@@ -20,18 +20,18 @@ export function TestProvider({ children }) {
         if (parsed.selectedRating !== undefined) setSelectedRating(parsed.selectedRating);
       }
     } catch (e) {
-      // ignore parse errors
-      console.warn('Failed to load test state', e);
+      // abaikan error parsing
+      console.warn('Gagal memuat status tes', e);
     }
   }, []);
 
-  // Persist to localStorage when relevant state changes
+  // Simpan ke localStorage ketika state yang relevan berubah
   useEffect(() => {
     try {
       const payload = JSON.stringify({ currentQuestionIndex, answers, selectedRating });
       localStorage.setItem(STORAGE_KEY, payload);
     } catch (e) {
-      console.warn('Failed to save test state', e);
+      console.warn('Gagal menyimpan status tes', e);
     }
   }, [currentQuestionIndex, answers, selectedRating]);
 
@@ -39,7 +39,7 @@ export function TestProvider({ children }) {
     setCurrentQuestionIndex(0);
     setAnswers([]);
     setSelectedRating(null);
-    try { localStorage.removeItem(STORAGE_KEY); } catch {}
+    try { localStorage.removeItem(STORAGE_KEY); } catch { }
   };
 
   return (

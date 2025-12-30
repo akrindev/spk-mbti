@@ -112,19 +112,19 @@ function Test() {
 	};
 
 	return (
-		<div className="bg-gradient-to-br from-blue-900 to-blue-600 p-4 md:p-8 min-h-screen">
-			<div className="mx-auto max-w-5xl">
-				<div className="bg-white shadow-lg p-6 md:p-8 rounded-t-2xl">
-					<h1 className="mb-4 font-bold text-blue-900 text-2xl md:text-3xl text-center">
+		<div className="flex justify-center items-center bg-gradient-to-br from-blue-900 to-blue-600 p-3 sm:p-4 md:p-8 min-h-screen">
+			<div className="mx-auto w-full max-w-5xl">
+				<div className="bg-white shadow-lg p-4 sm:p-6 md:p-8 rounded-t-2xl">
+					<h1 className="mb-3 sm:mb-4 font-bold text-blue-900 text-xl sm:text-2xl md:text-3xl text-center">
 						Tes Kepribadian MBTI
 					</h1>
-					<div className="bg-gray-200 mb-2 rounded-xl w-full h-3 overflow-hidden">
+					<div className="bg-gray-200 mb-2 rounded-xl w-full h-2 sm:h-3 overflow-hidden">
 						<div
 							className="bg-gradient-to-r from-blue-900 to-blue-500 rounded-xl h-full transition-all"
 							style={{ width: `${progress}%` }}
 						/>
 					</div>
-					<p className="text-gray-600 text-sm text-center">
+					<p className="text-gray-600 text-xs sm:text-sm text-center">
 						Pertanyaan {currentQuestionIndex + 1} dari {questions.length}
 					</p>
 				</div>
@@ -136,14 +136,14 @@ function Test() {
 						animate={{ opacity: 1, x: 0 }}
 						exit={{ opacity: 0, x: -30 }}
 						transition={{ duration: 0.35 }}
-						className="bg-white shadow-lg mt-4 p-6 md:p-8 rounded-b-2xl"
+						className="bg-white shadow-lg p-4 sm:p-6 md:p-8 rounded-b-2xl"
 					>
-						<h2 className="mb-6 font-semibold text-gray-800 text-xl md:text-2xl text-center leading-snug">
+						<h2 className="mb-4 sm:mb-6 font-semibold text-gray-800 text-base sm:text-xl md:text-2xl text-center leading-snug">
 							{currentQuestion.question}
 						</h2>
 
-						<div className="space-y-4">
-							<div className="flex justify-between mb-2 text-gray-600 text-xs sm:text-sm">
+						<div className="space-y-3 sm:space-y-4">
+							<div className="flex justify-between mb-2 text-gray-600 text-xs">
 								<span className="italic">Sangat Tidak Setuju</span>
 								<span className="italic">Sangat Setuju</span>
 							</div>
@@ -162,12 +162,12 @@ function Test() {
 											type="button"
 											onClick={() => handleRatingSelect(item.value)}
 											aria-pressed={isSelected}
-											className={`flex flex-col items-center justify-center p-2 sm:p-3 md:p-4 rounded-xl min-h-[70px] sm:min-h-[80px] md:min-h-[100px] transition transform cursor-pointer border ${isSelected ? "scale-105 shadow-lg" : "hover:-translate-y-1 hover:shadow-md"} ${colorClasses}`}
+											className={`flex flex-col items-center justify-center p-1 sm:p-2 md:p-4 rounded-lg sm:rounded-xl min-h-[50px] sm:min-h-[70px] md:min-h-[100px] transition transform cursor-pointer border text-xs sm:text-sm ${isSelected ? "scale-105 shadow-lg" : "hover:-translate-y-1 hover:shadow-md"} ${colorClasses}`}
 										>
-											<div className="font-medium text-xs sm:text-sm text-center">
+											<div className="font-medium text-center">
 												{item.shortLabel}
 											</div>
-											<div className="hidden sm:block mt-1 text-xs sm:text-sm text-center">
+											<div className="hidden sm:block mt-1 text-center">
 												{item.label}
 											</div>
 										</button>
@@ -178,13 +178,13 @@ function Test() {
 					</motion.div>
 				</AnimatePresence>
 
-				<div className="flex md:flex-row flex-col gap-3 mt-4">
+				<div className="flex sm:flex-row flex-col gap-2 sm:gap-3 mt-3 sm:mt-4">
 					<Button
 						onPress={handlePrevious}
 						type="button"
 						isDisabled={currentQuestionIndex === 0}
 						color="default"
-						className={`flex-1 py-3 rounded-full font-bold ${currentQuestionIndex === 0 ? "opacity-60" : ""}`}
+						className={`flex-1 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base ${currentQuestionIndex === 0 ? "opacity-60" : ""}`}
 					>
 						← Sebelumnya
 					</Button>
@@ -194,7 +194,7 @@ function Test() {
 						type="button"
 						color="primary"
 						size="lg"
-						className="flex-1 bg-gradient-to-r from-blue-900 to-blue-500 hover:shadow-lg py-3 rounded-full font-bold text-white"
+						className="flex-1 bg-gradient-to-r from-blue-900 to-blue-500 hover:shadow-lg py-2 sm:py-3 rounded-full font-bold text-white text-sm sm:text-base"
 					>
 						{currentQuestionIndex === questions.length - 1
 							? "Lihat Hasil"
@@ -202,8 +202,8 @@ function Test() {
 					</Button>
 				</div>
 
-				<div className="bg-white/20 backdrop-blur-sm mt-4 p-3 rounded-lg text-center">
-					<p className="text-white text-sm">
+				<div className="bg-white/20 backdrop-blur-sm mt-3 sm:mt-4 p-2 sm:p-3 rounded-lg text-center">
+					<p className="text-white text-xs sm:text-sm">
 						<strong>Dimensi:</strong>{" "}
 						{currentQuestion.dimension === "EI"
 							? "Energy Direction"
